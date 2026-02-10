@@ -1,24 +1,37 @@
-// app/components/ToggleDarkMode.tsx
 "use client";
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 
 export default function ToggleDarkMode() {
-  const [theme, setTheme] = useState("light");
+  const [dark, setDark] = useState(false);
 
+  // Load saved theme on page load
   useEffect(() => {
-    const t = document.documentElement.getAttribute("data-theme") || "light";
-    setTheme(t);
+    const saved = localStorage.getItem("theme");
+
+    if (saved === "dark") {
+      document.documentElement.classList.add("dark");
+      setDark(true);
+    }
   }, []);
 
   function toggle() {
-    const newTheme = theme === "light" ? "dark" : "light";
-    document.documentElement.setAttribute("data-theme", newTheme);
-    setTheme(newTheme);
+    if (dark) {
+      document.documentElement.classList.remove("dark");
+      localStorage.setItem("theme", "light");
+    } else {
+      document.documentElement.classList.add("dark");
+      localStorage.setItem("theme", "dark");
+    }
+
+    setDark(!dark);
   }
 
   return (
-    <button className="btn btn-ghost" onClick={toggle}>
-      {theme === "light" ? "🌙 Dark" : "☀️ Light"}
+    <button
+      onClick={toggle}
+      className="px-4 py-2 rounded-lg bg-gray-200 dark:bg-gray-800 dark:text-white"
+    >
+      {dark ? "☀️ Light" : "🌙 Dark"}
     </button>
   );
 }
