@@ -7,6 +7,8 @@ export type GeocodingResult = {
   latitude: number;
   longitude: number;
   timezone?: string;
+  elevation?: number;
+  population?: number;
 };
 
 export type CurrentWeather = {

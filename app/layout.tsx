@@ -104,9 +104,7 @@ export default function RootLayout({
                       d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
                     ></path>
                   </svg>
-                  <span className="dark:bg-gray-600">
-                    Weather data provided by Open-Meteo
-                  </span>
+                  <span className="">Weather data provided by Open-Meteo</span>
                 </div>
                 <div className="flex items-center space-x-4 text-sm text-gray-600">
                   <span className="flex items-center space-x-1">
